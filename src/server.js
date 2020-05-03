@@ -16,13 +16,15 @@ app.use(cors());
 db.connect(DB_HOST);
 
 app.get("/", async (req, res) => {
-    try {
-        const products = await models.Product.find();
-        res.json(products);
-    }
-    catch (error) {
-        console.log(error);
-    }
+
+    res.json("hello");
+    // try {
+    //     const products = await models.Product.find();
+    //     res.json(products);
+    // }
+    // catch (error) {
+    //     console.log(error);
+    // }
 });
 
 app.post("/getcartitems", async (req, res) => {
