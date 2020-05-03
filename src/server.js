@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-// const PORT = process.env.port;
+const PORT = process.env.PORT || 5000;
 const DB_HOST = process.env.DB_HOST;
 
 const db = require("./db");
@@ -17,14 +17,13 @@ db.connect(DB_HOST);
 
 app.get("/", async (req, res) => {
 
-    res.json("hello");
-    // try {
-    //     const products = await models.Product.find();
-    //     res.json(products);
-    // }
-    // catch (error) {
-    //     console.log(error);
-    // }
+    try {
+        const products = await models.Product.find();
+        res.json(products);
+    }
+    catch (error) {
+        console.log(error);
+    }
 });
 
 app.post("/getcartitems", async (req, res) => {
@@ -100,9 +99,6 @@ app.delete("/deleteproduct", async (req, res) => {
         console.log("tis be error", error);
     }
 })
-
-const PORT = process.env.port || 3000;
-
 
 app.listen(PORT, () => {
     console.log(`server is listening on port ${PORT}` )
