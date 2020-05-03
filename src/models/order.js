@@ -42,10 +42,10 @@ const OrderSchema = new mongoose.Schema(
                 max: 99
             },
             cvv: {
-                type: Number,
+                type: String,
                 required: true,
-                min: 000,
-                max: 999
+                minlength: 3,
+                maxlength: 3
             }
         },
         cartItems: [

@@ -77,14 +77,10 @@ app.post("/newpromocode", async (req, res) => {
 
 app.post("/neworder", async (req, res) => {
     const { order } = req.body;
-    console.log("order", order);
     try {
         const newOrder = await models.Order.create(order);
-
-
-
-        res.json(newOrderSelector(newOrder));
-
+        res.json({orderId: newOrder._id});
+        // res.json(newOrderSelector(newOrder));
     }
     catch (error) {
         console.log(error);
